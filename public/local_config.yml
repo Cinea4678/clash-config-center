@@ -1,0 +1,35 @@
+port: 7890
+socks-port: 7891
+experimental:
+  ignore-resolve-fail: true
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  default-nameserver:
+    - 114.114.114.114
+    - 8.8.8.8
+  ipv6: true
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+
+proxies:
+  - name: "XZVPN"
+    type: ss
+    server: rust.non-convex.tech
+    port: 10056
+    cipher: "aes-192-cfb"
+    password: ""
+
+#默认只能访问git仓库需要访问其他内网地址需要再下方增加分流规则
+rules:
+  #ft使用网页
+  - DOMAIN-KEYWORD ,non-convex, XZVPN
+  - DOMAIN-KEYWORD ,cicct0, XZVPN
+  - DOMAIN-KEYWORD ,xz08, XZVPN
+  - DOMAIN-KEYWORD ,xz07, XZVPN
+  - DOMAIN-KEYWORD ,ft11, XZVPN
+  - DOMAIN-KEYWORD ,ftapp, XZVPN
+  - DOMAIN-KEYWORD ,code.2502.info, XZVPN
+  - DOMAIN-KEYWORD ,personal.ft.ft, XZVPN
