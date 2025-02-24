@@ -11,3 +11,8 @@ declare namespace NodeJS {
         XZVPN_PASSWORD: string;
     }
 }
+
+declare module '*.yml' {
+    const contents: string;
+    export = contents;
+}

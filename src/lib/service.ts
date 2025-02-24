@@ -1,5 +1,5 @@
 import * as Yaml from 'js-yaml'
-import { promises as fs } from 'fs';
+import localConfig from './local_config.yml'
 
 export async function GetRemote() {
     const data = await fetch(process.env.REMOTE_CONFIG);
@@ -10,10 +10,9 @@ export async function GetRemote() {
 }
 
 export async function GetLocal() {
-    console.log(process.cwd())
-    const data = await fs.readFile(process.cwd() + '/public/local_config.yml', 'utf8')
+    const text = localConfig
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const yaml = Yaml.load(data) as any
+    const yaml = Yaml.load(text) as any
 
     // 填充密码
     yaml.proxies[0].password = process.env.XZVPN_PASSWORD
