@@ -2,7 +2,9 @@ import * as Yaml from 'js-yaml'
 import localConfig from './local_config.yml'
 
 export async function GetRemote() {
-    const data = await fetch(process.env.REMOTE_CONFIG);
+    const data = await fetch(process.env.REMOTE_CONFIG, {
+        next: { revalidate: 3600 * 6 }, 
+    });
     const text = await data.text()
     const yaml = Yaml.load(text)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
