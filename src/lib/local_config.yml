@@ -25,7 +25,7 @@ proxies:
 #默认只能访问git仓库需要访问其他内网地址需要再下方增加分流规则
 rules:
   #ft使用网页
-  - DOMAIN-KEYWORD ,non-convex, XZVPN
+  - DOMAIN-REGEX ,non-convex(-test)?\.tech, XZVPN
   - DOMAIN-KEYWORD ,cicct0, XZVPN
   - DOMAIN-KEYWORD ,xz08, XZVPN
   - DOMAIN-KEYWORD ,xz07, XZVPN
