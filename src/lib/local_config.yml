@@ -3,6 +3,9 @@ socks-port: 7891
 experimental:
   ignore-resolve-fail: true
 
+hosts:
+  fund_perf.geneasset.com: 8.133.197.143
+
 dns:
   enable: true
   listen: 0.0.0.0:53
