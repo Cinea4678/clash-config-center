@@ -25,6 +25,7 @@ proxies:
 #默认只能访问git仓库需要访问其他内网地址需要再下方增加分流规则
 rules:
   #ft使用网页
+  - DOMAIN-KEYWORD ,fund_perf.geneasset.com, DIRECT
   - DOMAIN-REGEX ,non-convex(-test)?\.(tech|com)$, XZVPN
   - DOMAIN-KEYWORD ,cicct0, XZVPN
   - DOMAIN-KEYWORD ,xz08, XZVPN
