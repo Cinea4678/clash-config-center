@@ -24,8 +24,8 @@ export async function GetLocal() {
 
 export async function GetConfig() {
     const [remote, local] = await Promise.all([GetRemote(), GetLocal()])
-    remote.proxies = remote.proxies.concat(local.proxies)
-    remote.rules = local.rules.concat(remote.rules)
+    remote.proxies = (remote.proxies ?? []).concat(local.proxies)
+    remote.rules = (local.rules ?? [] ).concat(remote.rules)
     remote.dns = local.dns
     remote.hosts = local.hosts
 
