@@ -1,8 +1,8 @@
 import * as Yaml from 'js-yaml'
 import localConfig from './local_config.yml'
 
-export async function GetRemote() {
-    const data = await fetch(process.env.REMOTE_CONFIG, {
+export async function GetRemote(remote?: string) {
+    const data = await fetch(remote ?? process.env.REMOTE_CONFIG, {
         next: { revalidate: 3600 * 6 }, 
     });
     const text = await data.text()
@@ -22,8 +22,8 @@ export async function GetLocal() {
     return yaml
 }
 
-export async function GetConfig() {
-    const [remote, local] = await Promise.all([GetRemote(), GetLocal()])
+export async function GetConfig(options: {remote?: string} = {}) {
+    const [remote, local] = await Promise.all([GetRemote(options.remote), GetLocal()])
     remote.proxies = (remote.proxies ?? []).concat(local.proxies)
     remote.rules = (local.rules ?? [] ).concat(remote.rules)
     remote.dns = local.dns
