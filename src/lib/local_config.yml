@@ -29,7 +29,10 @@ proxies:
 rules:
   #ft使用网页
   - DOMAIN-KEYWORD ,fund_perf.geneasset.com, DIRECT
-  - DOMAIN-REGEX ,non-convex(-test)?\.(tech|com)$, XZVPN
+  - DOMAIN-KEYWORD ,non-convex.com, XZVPN
+  - DOMAIN-KEYWORD ,non-convex.tech, XZVPN
+  - DOMAIN-KEYWORD ,non-convex-test.com, XZVPN
+  - DOMAIN-KEYWORD ,non-convex-test.tech, XZVPN
   - DOMAIN-KEYWORD ,cicct0, XZVPN
   - DOMAIN-KEYWORD ,xz08, XZVPN
   - DOMAIN-KEYWORD ,xz07, XZVPN
